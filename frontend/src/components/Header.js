@@ -1,38 +1,17 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Heart, ShoppingCart, User, Menu, X, Search } from 'lucide-react';
-import { useState, useEffect } from 'react';
-import { useAuth } from '../App';
-import axios from 'axios';
+import { useState } from 'react';
+import { useAuth, useCart } from '../App';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 export default function Header() {
   const { user, logout } = useAuth();
+  const { cartCount, wishlistCount } = useCart();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [cartCount, setCartCount] = useState(0);
-  const [wishlistCount, setWishlistCount] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
-
-  useEffect(() => {
-    if (user) {
-      fetchCounts();
-    }
-  }, [user]);
-
-  const fetchCounts = async () => {
-    try {
-      const [cartRes, wishlistRes] = await Promise.all([
-        axios.get(`${API}/cart`, { withCredentials: true }),
-        axios.get(`${API}/wishlist`, { withCredentials: true }),
-      ]);
-      setCartCount(cartRes.data.items?.length || 0);
-      setWishlistCount(wishlistRes.data.items?.length || 0);
-    } catch (error) {
-      console.error('Error fetching counts:', error);
-    }
-  };
 
   const handleSearch = (e) => {
     e.preventDefault();

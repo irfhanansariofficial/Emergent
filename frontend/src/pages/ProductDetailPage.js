@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Star, Heart, ShoppingCart, Check } from 'lucide-react';
 import axios from 'axios';
-import { useAuth } from '../App';
+import { useAuth, useCart } from '../App';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
@@ -15,6 +15,7 @@ const API = `${BACKEND_URL}/api`;
 export default function ProductDetailPage() {
   const { productId } = useParams();
   const { user } = useAuth();
+  const { refreshCounts } = useCart();
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -64,6 +65,7 @@ export default function ProductDetailPage() {
         { withCredentials: true }
       );
       toast.success('Added to cart!');
+      refreshCounts(); // Refresh cart count
     } catch (error) {
       toast.error(error.response?.data?.detail || 'Failed to add to cart');
     }
@@ -85,6 +87,7 @@ export default function ProductDetailPage() {
         toast.success('Added to wishlist!');
         setIsInWishlist(true);
       }
+      refreshCounts(); // Refresh wishlist count
     } catch (error) {
       toast.error(error.response?.data?.detail || 'Failed to update wishlist');
     }

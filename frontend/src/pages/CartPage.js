@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Trash2, Plus, Minus } from 'lucide-react';
 import axios from 'axios';
-import { useAuth } from '../App';
+import { useAuth, useCart } from '../App';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { toast } from 'sonner';
@@ -12,6 +12,7 @@ const API = `${BACKEND_URL}/api`;
 
 export default function CartPage() {
   const { user } = useAuth();
+  const { refreshCounts } = useCart();
   const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -55,6 +56,7 @@ export default function CartPage() {
       await axios.delete(`${API}/cart/${cartItemId}`, { withCredentials: true });
       toast.success('Item removed from cart');
       fetchCart();
+      refreshCounts(); // Update cart count in header
     } catch (error) {
       toast.error('Failed to remove item');
     }

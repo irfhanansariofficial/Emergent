@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Trash2, ShoppingCart } from 'lucide-react';
 import axios from 'axios';
-import { useAuth } from '../App';
+import { useAuth, useCart } from '../App';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { toast } from 'sonner';
@@ -12,6 +12,7 @@ const API = `${BACKEND_URL}/api`;
 
 export default function WishlistPage() {
   const { user } = useAuth();
+  const { refreshCounts } = useCart();
   const navigate = useNavigate();
   const [wishlistItems, setWishlistItems] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -40,6 +41,7 @@ export default function WishlistPage() {
       await axios.delete(`${API}/wishlist/${productId}`, { withCredentials: true });
       toast.success('Removed from wishlist');
       fetchWishlist();
+      refreshCounts(); // Update wishlist count in header
     } catch (error) {
       toast.error('Failed to remove item');
     }
@@ -53,6 +55,7 @@ export default function WishlistPage() {
         { withCredentials: true }
       );
       toast.success('Added to cart!');
+      refreshCounts(); // Update cart count in header
     } catch (error) {
       toast.error('Failed to add to cart');
     }

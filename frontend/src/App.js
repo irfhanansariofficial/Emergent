@@ -31,6 +31,17 @@ export const useAuth = () => {
   return context;
 };
 
+// Cart Context
+const CartContext = createContext();
+
+export const useCart = () => {
+  const context = useContext(CartContext);
+  if (!context) {
+    throw new Error('useCart must be used within CartProvider');
+  }
+  return context;
+};
+
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -83,6 +94,41 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
+// Cart Provider
+export const CartProvider = ({ children }) => {
+  const [cartCount, setCartCount] = useState(0);
+  const [wishlistCount, setWishlistCount] = useState(0);
+  const { user } = useAuth();
+
+  useEffect(() => {
+    if (user) {
+      refreshCounts();
+    } else {
+      setCartCount(0);
+      setWishlistCount(0);
+    }
+  }, [user]);
+
+  const refreshCounts = async () => {
+    try {
+      const [cartRes, wishlistRes] = await Promise.all([
+        axios.get(`${API}/cart`, { withCredentials: true }),
+        axios.get(`${API}/wishlist`, { withCredentials: true }),
+      ]);
+      setCartCount(cartRes.data.items?.length || 0);
+      setWishlistCount(wishlistRes.data.items?.length || 0);
+    } catch (error) {
+      console.error('Error fetching counts:', error);
+    }
+  };
+
+  return (
+    <CartContext.Provider value={{ cartCount, wishlistCount, refreshCounts }}>
+      {children}
+    </CartContext.Provider>
+  );
+};
+
 // App Router Component
 function AppRouter() {
   const location = useLocation();
@@ -113,7 +159,9 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <AuthProvider>
-          <AppRouter />
+          <CartProvider>
+            <AppRouter />
+          </CartProvider>
         </AuthProvider>
       </BrowserRouter>
     </div>
