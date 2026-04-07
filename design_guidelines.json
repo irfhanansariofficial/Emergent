@@ -1,0 +1,135 @@
+{
+  "theme": "light",
+  "archetype": "1 (Organic & Earthy) blended with Luxury",
+  "brand": {
+    "name": "BeauGlow India",
+    "tagline": "Natural Beauty, Indian Grace ✨",
+    "tone": "Premium, elegant, soft, cultural, natural, glowing"
+  },
+  "colors": {
+    "primary": "#f8d7da",
+    "secondary": "#f5e6da",
+    "accent": "#d4af37",
+    "background": "#faf7f5",
+    "surface": "#ffffff",
+    "text_primary": "#332211",
+    "text_secondary": "#5c4a3d",
+    "border": "#e8d8d0",
+    "success": "#2e7d32",
+    "error": "#c62828"
+  },
+  "typography": {
+    "heading_font": "Playfair Display",
+    "body_font": "Poppins",
+    "scales": {
+      "h1": "text-5xl sm:text-6xl tracking-tight leading-none text-[#332211]",
+      "h2": "text-4xl sm:text-5xl tracking-tight leading-tight text-[#332211]",
+      "h3": "text-2xl sm:text-3xl text-[#332211]",
+      "h4": "text-xl font-medium text-[#332211]",
+      "body": "text-base leading-relaxed text-[#5c4a3d]",
+      "small": "text-sm uppercase tracking-widest font-semibold text-[#d4af37]"
+    }
+  },
+  "spacing_and_layout": {
+    "container_padding": "px-6 md:px-12 lg:px-24 py-12 lg:py-24",
+    "card_radius": "rounded-2xl",
+    "button_radius": "rounded-full",
+    "gap_system": "gap-8 lg:gap-16",
+    "grid_patterns": {
+      "categories": "grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-8 gap-4",
+      "bento_features": "grid grid-cols-1 md:grid-cols-8 lg:grid-cols-12 gap-8"
+    }
+  },
+  "surfaces": {
+    "cards": "bg-white border border-[#e8d8d0] shadow-[0_8px_30px_rgb(0,0,0,0.04)]",
+    "glass": "bg-white/70 backdrop-blur-xl border border-white/40 shadow-sm",
+    "product_card": "bg-white rounded-2xl p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border border-transparent hover:border-[#d4af37]/20"
+  },
+  "components_strategy": {
+    "header": "Sticky nav with glassmorphism (bg-white/80 backdrop-blur-md). Includes Logo, Nav Links, Search, Wishlist, Cart.",
+    "hero": "Large elegant banner. Use subtle zoom-in parallax effect. Text overlays should have high contrast or a soft gradient behind text to preserve readability over images.",
+    "buttons": "Primary: bg-[#d4af37] text-white hover:bg-[#b8952a] rounded-full px-8 py-3 transition-colors. Secondary: border-2 border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37] hover:text-white rounded-full.",
+    "forms_inputs": "Shadcn components with rounded-full or rounded-xl edges, soft borders border-[#e8d8d0], focus:ring-[#d4af37].",
+    "badges": "bg-[#f8d7da] text-[#332211] font-medium text-xs px-3 py-1 rounded-full",
+    "whatsapp_chat": "Fixed bottom-right corner, circular floating action button, subtle pulse animation."
+  },
+  "animations": {
+    "scroll": "Smooth scrolling using Lenis.",
+    "entrance": "Framer Motion staggered fade-in up (y: 20, opacity: 0 -> y: 0, opacity: 1) for lists and grids.",
+    "hover": "Smooth scale up (1.05) on product images, subtle shadow increase on cards."
+  },
+  "icons": {
+    "library": "lucide-react",
+    "style": "Thin, elegant stroke (strokeWidth 1.5)"
+  },
+  "media": {
+    "hero_banner": [
+      {
+        "url": "https://static.prod-images.emergentagent.com/jobs/14e8ee04-2ea2-44e6-8949-ef4c9754eb2d/images/789f740e6d49361f2faeff497ed74b46c797d3a55f3d28f1627186eaac7d2f4b.png",
+        "description": "Indian woman with glowing skin, minimal gold jewelry, beige background",
+        "category": "hero"
+      }
+    ],
+    "offer_banner": [
+      {
+        "url": "https://static.prod-images.emergentagent.com/jobs/14e8ee04-2ea2-44e6-8949-ef4c9754eb2d/images/8212ecd347a14718d4628a0a5384380aa2bd068e01430557cede6b1b16f14a72.png",
+        "description": "Festive Indian beauty products flat lay, glowing gold accents",
+        "category": "banner"
+      }
+    ],
+    "products": [
+      {
+        "url": "https://static.prod-images.emergentagent.com/jobs/14e8ee04-2ea2-44e6-8949-ef4c9754eb2d/images/57d78540f7ef9d0b6bfa36c64b23771a9056c554325f255ff416373861499d85.png",
+        "description": "Premium cosmetic bottle on soft pink silk background",
+        "category": "product"
+      },
+      {
+        "url": "https://static.prod-images.emergentagent.com/jobs/14e8ee04-2ea2-44e6-8949-ef4c9754eb2d/images/698d2047aff0b758d06c1795bc486caa1112887bd9b052fa7acac24beb7faed2.png",
+        "description": "Collection of premium skincare cosmetic bottles, glass and gold caps",
+        "category": "product"
+      },
+      {
+        "url": "https://images.pexels.com/photos/18739319/pexels-photo-18739319.jpeg",
+        "description": "Aloe vera gel jar",
+        "category": "product"
+      },
+      {
+        "url": "https://images.pexels.com/photos/18066456/pexels-photo-18066456.jpeg",
+        "description": "Vilvah beauty serums natural",
+        "category": "product"
+      }
+    ],
+    "categories": [
+      {
+        "url": "https://images.unsplash.com/photo-1614520993709-fe26b76ae805?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjB3b21hbiUyMGdsb3dpbmclMjBza2luJTIwYmVhdXR5fGVufDB8fHx8MTc3NTU0OTg1Mnww&ixlib=rb-4.1.0&q=85",
+        "description": "Eye Makeup Model",
+        "category": "category_image"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1599690901937-81d763397828?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwyfHxpbmRpYW4lMjB3b21hbiUyMGdsb3dpbmclMjBza2luJTIwYmVhdXR5fGVufDB8fHx8MTc3NTU0OTg1Mnww&ixlib=rb-4.1.0&q=85",
+        "description": "Face Makeup Model",
+        "category": "category_image"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1747264464533-ce59ecd395e2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwzfHxpbmRpYW4lMjB3b21hbiUyMGdsb3dpbmclMjBza2luJTIwYmVhdXR5fGVufDB8fHx8MTc3NTU0OTg1Mnww&ixlib=rb-4.1.0&q=85",
+        "description": "Bridal/Traditional Model",
+        "category": "category_image"
+      }
+    ]
+  },
+  "accessibility": {
+    "focus_states": "focus-visible:ring-2 focus-visible:ring-[#d4af37] focus-visible:ring-offset-2",
+    "contrast": "Ensure #332211 or #5c4a3d text over #f8d7da or #f5e6da meets 4.5:1 ratio.",
+    "test_ids": "All interactive elements must have data-testid attributes (e.g., data-testid='add-to-cart-button')."
+  },
+  "instructions_to_main_agent": [
+    "Use standard HTML tags alongside Tailwind for complex marketing layouts; utilize Shadcn mainly for complex interactive components (Select, Dialog, Form).",
+    "Avoid generic borders. Use soft shadows or very subtle colored borders (#e8d8d0) for cards.",
+    "Implement Framer Motion for scroll stagger animations on grids (Categories, Products).",
+    "Hero section should feel premium; if overlaying text on the image, use a subtle radial gradient or soft background overlay to ensure the Playfair text remains highly legible.",
+    "Create dummy products based on the provided media URLs. Map images to 'Eye Makeup', 'Face Makeup', 'Skincare', 'Hair Care', 'Bridal Collection'.",
+    "Theme is primarily LIGHT, capturing an 'Organic & Earthy' yet 'Luxurious' feel. Do not use dark mode globally.",
+    "Include a 'WhatsApp Chat' button floating fixed at the bottom right corner.",
+    "Include Google Fonts 'Playfair Display' and 'Poppins' in the index.html or global css."
+  ]
+}
