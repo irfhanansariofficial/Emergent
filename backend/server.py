@@ -352,13 +352,17 @@ async def get_cart(request: Request, session_token: Optional[str] = Cookie(None)
         {"_id": 0}
     ).to_list(100)
     
-    # Enrich with product details
-    for item in cart_items:
-        product = await db.products.find_one(
-            {"product_id": item["product_id"]},
+    # Enrich with product details - optimized bulk query
+    if cart_items:
+        product_ids = [item["product_id"] for item in cart_items]
+        products = await db.products.find(
+            {"product_id": {"$in": product_ids}},
             {"_id": 0}
-        )
-        item["product"] = product
+        ).to_list(100)
+        products_map = {p["product_id"]: p for p in products}
+        
+        for item in cart_items:
+            item["product"] = products_map.get(item["product_id"])
     
     return {"items": cart_items}
 
@@ -442,13 +446,17 @@ async def get_wishlist(request: Request, session_token: Optional[str] = Cookie(N
         {"_id": 0}
     ).to_list(100)
     
-    # Enrich with product details
-    for item in wishlist_items:
-        product = await db.products.find_one(
-            {"product_id": item["product_id"]},
+    # Enrich with product details - optimized bulk query
+    if wishlist_items:
+        product_ids = [item["product_id"] for item in wishlist_items]
+        products = await db.products.find(
+            {"product_id": {"$in": product_ids}},
             {"_id": 0}
-        )
-        item["product"] = product
+        ).to_list(100)
+        products_map = {p["product_id"]: p for p in products}
+        
+        for item in wishlist_items:
+            item["product"] = products_map.get(item["product_id"])
     
     return {"items": wishlist_items}
 
